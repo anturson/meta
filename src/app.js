@@ -18,8 +18,8 @@ export default (dbUri) => {
   app.use(bodyParser.urlencoded({ extended: true, }));
   app.use(bodyParser.json());
 
-  app.use('/api/entities', itemsRouter(Entity));
-  app.use('/api/fields', itemsRouter(Field));
+  app.use('/api/entity', itemsRouter(Entity));
+  app.use('/api/field', itemsRouter(Field));
 
   return app;
 };

@@ -23,7 +23,21 @@ export default (Model) => {
   });
 
   const getList = withErrorHandling(async (req, res) => {
-    const list = await Model.find(req.query);
+    // let dbQuery = Model.find();
+    // if (req.query.populate || typeof (req.query.populateAll) !== 'undefined') {
+    //   const schemaObj = Model.schema.obj;
+    //   let populateProps = Object.keys(schemaObj)
+    //     .filter((prop) => schemaObj[prop].type === mongoose.Types.ObjectId);
+    //   if (req.query.populate) {
+    //     const exactKeys = req.query.populate.split(',').map(prop => prop.trim());
+    //     populateProps = populateProps.filter((prop) => exactKeys.includes(prop));
+    //   }
+    //   if (populateProps.length) {
+    //     dbQuery = populateProps.reduce((query, prop) => query.populate(prop), dbQuery);
+    //   }
+    // }
+    // const list = await dbQuery.exec();
+    const list = await Model.find();
     res.json(list);
   });
 
