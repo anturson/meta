@@ -8,7 +8,7 @@
     "build": "babel src -d dist",
     "postbuild": "node dist/index.js",
     "clean-dist": "rimraf ./dist && mkdir dist",
-    "start": "npm-run-all --parallel lint:watch test-unit:watch start-watch",
+    "start": "DEBUG=app npm-run-all --parallel lint:watch test-unit:watch start-watch",
     "start-watch": "nodemon src/index.js --exec babel-node",
     "start-prod": "babel src -d dist && node dist/index.js",
     "lint": "esw src",
@@ -21,7 +21,8 @@
     "heroku-remote": "heroku git:remote -a gentle-ravine-31043",
     "heroku-deploy": "git push heroku master",
     "heroku-mongolab-add": "heroku addons:create mongolab # Created mongolab-solid-31815 as MONGODB_URI",
-    "heroku-mongolab-docs": "heroku addons:docs mongolab"
+    "heroku-mongolab-docs": "heroku addons:docs mongolab",
+    "heroku-config-vars": "heroku config"
   },
   "repository": {
     "type": "git",
@@ -44,8 +45,10 @@
     "chai-spies": "^1.0.0",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
+    "debug": "^4.1.0",
     "express": "^4.16.4",
     "mongoose": "^5.3.12",
+    "morgan": "^1.9.1",
     "numeral": "^2.0.6",
     "path": "^0.12.7"
   },

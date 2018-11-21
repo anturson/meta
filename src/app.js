@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import morgan from 'morgan';
 
 import Entity from './entity';
 import Field from './field';
@@ -14,6 +15,7 @@ export default (dbUri) => {
 
   const app = express();
 
+  app.use(morgan('tiny'));
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true, }));
   app.use(bodyParser.json());
